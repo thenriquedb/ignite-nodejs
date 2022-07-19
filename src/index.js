@@ -6,10 +6,10 @@ app.use(express.json());
 
 /**
  * @typedef Customer
- * @property cpf;
- * @property name;
- * @property id;
- * @property statements
+ * @property {string} cpf;
+ * @property {string} name;
+ * @property {uuid} id;
+ * @property {[]}statements
  */
 
 /**
@@ -21,7 +21,7 @@ function customerAlreadyExists(cpf) {
   return customers.some((customer) => customer.cpf === cpf);
 }
 
-/* Middleware */
+/* Middlewares */
 function verifyIfAccountExists(req, res, next) {
   const { cpf } = req.headers;
 
@@ -63,6 +63,22 @@ app.get("/statement", (req, res) => {
   return res.status(200).json({
     statements: customer?.statement,
   });
+});
+
+app.post("/deposit", (req, res) => {
+  const { description, amount } = req.body;
+  const { customer } = req;
+
+  const statementOperation = {
+    description,
+    amount,
+    created_at: new Date(),
+    type: "debit",
+  };
+
+  customer.statement.push(statementOperation);
+
+  return res.status(201).send();
 });
 
 app.listen(3333);
