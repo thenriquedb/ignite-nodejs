@@ -9,7 +9,7 @@ app.use(express.json());
  * @property cpf;
  * @property name;
  * @property id;
- * @property statement
+ * @property statements
  */
 
 /**
@@ -39,6 +39,22 @@ app.post("/accounts", (req, res) => {
 
   customers.push(newCustomer);
   return res.status(201).send();
+});
+
+app.get("/statement/:cpf", (req, res) => {
+  const { cpf } = req.params;
+
+  const findedCustomer = customers.find((customer) => customer.cpf === cpf);
+
+  if (!findedCustomer) {
+    return res.status(400).json({
+      error: "Customer not found",
+    });
+  }
+
+  return res.status(200).json({
+    statements: findedCustomer?.statement,
+  });
 });
 
 app.listen(3333);
