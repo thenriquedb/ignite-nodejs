@@ -4,18 +4,23 @@ const { v4: uuidV4 } = require("uuid");
 const app = express();
 app.use(express.json());
 
+/**
+ * @typedef Customer
+ * @property cpf;
+ * @property name;
+ * @property id;
+ * @property statement
+ */
+
+/**
+ * @type Customer[]
+ */
 const customers = [];
 
 function customerAlreadyExists(cpf) {
   return customers.some((customer) => customer.cpf === cpf);
 }
 
-/**
- * cpf: string;
- * name: string;
- * id: uuid;
- * statement: [];
- */
 app.post("/accounts", (req, res) => {
   const { cpf, name } = req.body;
 
