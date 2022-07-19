@@ -1,0 +1,36 @@
+Arguments: 
+  /home/thiago/.nvm/versions/node/v16.15.1/bin/node /usr/share/yarn/bin/yarn.js init
+
+PATH: 
+  /home/thiago/.asdf/shims:/home/thiago/.asdf/bin:/home/thiago/.zinit/polaris/sbin:/home/thiago/.zinit/polaris/bin:/home/thiago/.nvm/versions/node/v16.15.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/thiago/Android/Sdk/emulator:/home/thiago/Android/Sdk/tools:/home/thiago/Android/Sdk/tools/bin:/home/thiago/Android/Sdk/platform-tools:/usr/local/bin:/home/thiago/android-studio/bin:/home/thiago/Android/Sdk/emulator:/home/thiago/Android/Sdk/tools:/home/thiago/Android/Sdk/tools/bin:/home/thiago/Android/Sdk/platform-tools:/usr/local/bin:/home/thiago/android-studio/bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  16.15.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/usr/share/yarn/lib/cli.js:137009:13)
+      at Interface.emit (node:events:527:28)
+      at Interface._ttyWrite (node:readline:1081:16)
+      at ReadStream.onkeypress (node:readline:288:10)
+      at ReadStream.emit (node:events:527:28)
+      at emitKeys (node:internal/readline/utils:358:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (node:internal/readline/emitKeypressEvents:61:36)
+      at ReadStream.emit (node:events:527:28)
+      at addChunk (node:internal/streams/readable:315:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
