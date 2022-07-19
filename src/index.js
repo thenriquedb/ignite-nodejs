@@ -21,6 +21,20 @@ function customerAlreadyExists(cpf) {
   return customers.some((customer) => customer.cpf === cpf);
 }
 
+/* Middleware */
+function verifyIfAccountExists(req, res, next) {
+  const { cpf } = req.headers;
+
+  const customer = customers.find((customer) => customer.cpf === cpf);
+  req.customer = customer;
+
+  if (customer) return next();
+
+  return res.status(400).json({
+    error: "Customer not found",
+  });
+}
+
 app.post("/accounts", (req, res) => {
   const { cpf, name } = req.body;
 
@@ -41,19 +55,13 @@ app.post("/accounts", (req, res) => {
   return res.status(201).send();
 });
 
-app.get("/statement/:cpf", (req, res) => {
-  const { cpf } = req.params;
+app.use(verifyIfAccountExists);
 
-  const findedCustomer = customers.find((customer) => customer.cpf === cpf);
-
-  if (!findedCustomer) {
-    return res.status(400).json({
-      error: "Customer not found",
-    });
-  }
+app.get("/statement", (req, res) => {
+  const { customer } = req;
 
   return res.status(200).json({
-    statements: findedCustomer?.statement,
+    statements: customer?.statement,
   });
 });
 
