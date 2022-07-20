@@ -1,4 +1,3 @@
-const { response } = require("express");
 const express = require("express");
 const { v4: uuidV4 } = require("uuid");
 
@@ -84,6 +83,14 @@ app.put("/account", (req, res) => {
 app.get("/account", (req, res) => {
   const { customer } = req;
   return res.status(201).json({ customer });
+});
+
+app.delete("/account", (req, res) => {
+  const { customer } = req;
+
+  customers.splice(customer, 1);
+
+  return res.status(204).send();
 });
 
 app.get("/statement", (req, res) => {
