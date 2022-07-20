@@ -50,7 +50,7 @@ function verifyIfAccountExists(req, res, next) {
   });
 }
 
-app.post("/accounts", (req, res) => {
+app.post("/account", (req, res) => {
   const { cpf, name } = req.body;
 
   if (customerAlreadyExists(cpf)) {
@@ -71,6 +71,15 @@ app.post("/accounts", (req, res) => {
 });
 
 app.use(verifyIfAccountExists);
+
+app.put("/account", (req, res) => {
+  const { name } = req.body;
+  const { customer } = req;
+
+  customer.name = name;
+
+  return res.status(201).send();
+});
 
 app.get("/statement", (req, res) => {
   const { customer } = req;
