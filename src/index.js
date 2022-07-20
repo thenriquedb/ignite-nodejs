@@ -1,3 +1,4 @@
+const { response } = require("express");
 const express = require("express");
 const { v4: uuidV4 } = require("uuid");
 
@@ -5,11 +6,17 @@ const app = express();
 app.use(express.json());
 
 /**
+ * @typedef Statement
+ * @property {string} description
+ * @property {number} amount
+ * @property {string} created_at
+ * @property {"credit" | "debit"} type
+ *
  * @typedef Customer
  * @property {string} cpf;
  * @property {string} name;
  * @property {uuid} id;
- * @property {[]}statements
+ * @property {Statement[]}statement
  */
 
 /**
@@ -19,6 +26,14 @@ const customers = [];
 
 function customerAlreadyExists(cpf) {
   return customers.some((customer) => customer.cpf === cpf);
+}
+
+/**
+ * Calculate customer balance
+ * @param {Statement[]} statement
+ */
+function getBalance(statement) {
+  return statement.reduce((acc, operation) => acc + operation.amount, 0);
 }
 
 /* Middlewares */
@@ -70,9 +85,33 @@ app.post("/deposit", (req, res) => {
   const { customer } = req;
 
   const statementOperation = {
-    description,
     amount,
     created_at: new Date(),
+    description,
+    type: "credit",
+  };
+
+  customer.statement.push(statementOperation);
+
+  return res.status(201).send();
+});
+
+app.post("/withdraw", (req, res) => {
+  const { amount } = req.body;
+  const { customer } = req;
+
+  const balance = getBalance(customer.statement);
+
+  if (balance < amount) {
+    return res.status(400).json({
+      error: "Insufficient funds",
+    });
+  }
+
+  const statementOperation = {
+    amount: -amount,
+    created_at: new Date(),
+    description: "withdraw",
     type: "debit",
   };
 
