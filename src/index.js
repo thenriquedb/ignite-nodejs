@@ -76,7 +76,24 @@ app.get("/statement", (req, res) => {
   const { customer } = req;
 
   return res.status(200).json({
-    statements: customer?.statement,
+    statement: customer?.statement,
+  });
+});
+
+app.get("/statement/date", (req, res) => {
+  const { date } = req.query;
+  const { customer } = req;
+
+  const dateFormat = new Date(`${date} 00:00`);
+
+  const statement = customer.statement.filter(
+    (operation) =>
+      operation.created_at.toDateString() ===
+      new Date(dateFormat).toDateString()
+  );
+
+  return res.status(200).json({
+    statement,
   });
 });
 
