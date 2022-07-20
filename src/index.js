@@ -81,6 +81,11 @@ app.put("/account", (req, res) => {
   return res.status(201).send();
 });
 
+app.get("/account", (req, res) => {
+  const { customer } = req;
+  return res.status(201).json({ customer });
+});
+
 app.get("/statement", (req, res) => {
   const { customer } = req;
 
