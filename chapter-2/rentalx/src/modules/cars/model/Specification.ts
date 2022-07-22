@@ -1,3 +1,5 @@
+import { v4 as uuidV4 } from "uuid";
+
 class Specification {
   public created_at: Date;
   public description: string;
