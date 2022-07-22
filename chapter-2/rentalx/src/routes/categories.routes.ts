@@ -3,6 +3,7 @@ import { CreateCategoryService } from "@modules/cars/services/CreateCategoryServ
 import { Router } from "express";
 
 const categoriesRoutes = Router();
+
 const categoriesRepository = new CategoriesRepository();
 
 categoriesRoutes.get("/", (_, response) => {
