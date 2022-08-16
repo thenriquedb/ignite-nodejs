@@ -7,7 +7,7 @@ class ImportCategoryUseCase {
     this.categoriesRepository = categoriesRepository;
   }
 
-  execute(file: any) {
+  execute(file: Express.Multer.File) {
     console.log(file);
   }
 }
