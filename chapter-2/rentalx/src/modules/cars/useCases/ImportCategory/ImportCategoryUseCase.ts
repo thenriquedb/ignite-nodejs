@@ -26,6 +26,8 @@ class ImportCategoryUseCase {
     });
 
     await finished(parser);
+    await fs.promises.unlink(file.path);
+
     return categories;
   }
 
