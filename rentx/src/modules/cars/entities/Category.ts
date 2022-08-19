@@ -1,9 +1,18 @@
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
+@Entity()
 class Category {
-  public created_at: Date;
-  public description: string;
+  @PrimaryGeneratedColumn()
   public id?: string;
+
+  @Column("timestamp")
+  public created_at: Date;
+
+  @Column("varchar")
+  public description: string;
+
+  @Column("varchar")
   public name: string;
 
   constructor() {
