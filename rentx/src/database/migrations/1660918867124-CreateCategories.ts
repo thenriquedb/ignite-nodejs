@@ -30,6 +30,6 @@ export class CreateCategories1660918867124 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.dropTable("Categories");
+    await queryRunner.dropTable("categories");
   }
 }
