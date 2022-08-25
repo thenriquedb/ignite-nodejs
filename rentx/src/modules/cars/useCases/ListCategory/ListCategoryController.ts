@@ -9,8 +9,8 @@ class ListCategoryController {
     this.listCategoryUseCase = listCategoryUseCase;
   }
 
-  handle(_: Request, response: Response) {
-    const categories = this.listCategoryUseCase.execute();
+  async handle(_: Request, response: Response) {
+    const categories = await this.listCategoryUseCase.execute();
     return response.status(200).json(categories);
   }
 }

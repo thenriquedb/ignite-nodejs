@@ -1,1 +1,1 @@
-export * from "./ImportCategoryFactory";
+export { default as importCategoryController } from "./ImportCategoryFactory";

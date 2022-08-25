@@ -1,1 +1,1 @@
-export * from "./ListCategoryFactory";
+export { default as listCategoryController } from "./ListCategoryFactory";

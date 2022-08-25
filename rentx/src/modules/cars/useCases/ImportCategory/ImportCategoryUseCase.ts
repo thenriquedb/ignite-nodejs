@@ -37,10 +37,10 @@ class ImportCategoryUseCase {
     // eslint-disable-next-line no-restricted-syntax
     for await (const category of categories) {
       const { name, description } = category;
-      const categoryExists = this.categoriesRepository.findByName(name);
+      const categoryExists = await this.categoriesRepository.findByName(name);
 
       if (!categoryExists) {
-        this.categoriesRepository.create({ name, description });
+        await this.categoriesRepository.create({ name, description });
       }
     }
   }
