@@ -1,1 +1,1 @@
-export * from "./ListSpecificationFactory";
+export { default as listSpecificationController } from "./ListSpecificationFactory";

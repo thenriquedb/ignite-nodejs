@@ -1,1 +1,1 @@
-export * from "./CreateSpecificationFactory";
+export { default as createSpecificationController } from "./CreateSpecificationFactory";

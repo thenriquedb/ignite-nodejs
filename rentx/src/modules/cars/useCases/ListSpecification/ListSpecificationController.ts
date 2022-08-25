@@ -9,8 +9,8 @@ class ListSpecificationController {
     this.listSpecificationUseCase = listSpecificationUseCase;
   }
 
-  handle(_: Request, response: Response) {
-    const specifications = this.listSpecificationUseCase.execute();
+  async handle(_: Request, response: Response) {
+    const specifications = await this.listSpecificationUseCase.execute();
     return response.json(specifications);
   }
 }
