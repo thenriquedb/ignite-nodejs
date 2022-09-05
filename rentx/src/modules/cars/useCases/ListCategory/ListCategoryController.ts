@@ -1,16 +1,12 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 
 import { ListCategoryUseCase } from "./ListCategoryUseCase";
 
 class ListCategoryController {
-  private listCategoryUseCase: ListCategoryUseCase;
-
-  constructor(listCategoryUseCase: ListCategoryUseCase) {
-    this.listCategoryUseCase = listCategoryUseCase;
-  }
-
   async handle(_: Request, response: Response) {
-    const categories = await this.listCategoryUseCase.execute();
+    const listCategoryUseCase = container.resolve(ListCategoryUseCase);
+    const categories = await listCategoryUseCase.execute();
     return response.status(200).json(categories);
   }
 }
