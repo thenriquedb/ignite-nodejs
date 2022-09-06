@@ -9,7 +9,7 @@ class CreateUserController {
     request: Request<void, void, ICreateUserDTO>,
     response: Response
   ) {
-    const { driver_license, email, name, password, username } = request.body;
+    const { driver_license, email, name, password } = request.body;
 
     const createUserUseCase = container.resolve(CreateUserUseCase);
 
@@ -18,7 +18,6 @@ class CreateUserController {
       email,
       name,
       password,
-      username,
     });
 
     return response.status(201).send();

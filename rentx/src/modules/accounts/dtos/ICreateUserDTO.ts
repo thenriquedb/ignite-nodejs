@@ -3,7 +3,6 @@ interface ICreateUserDTO {
   email: string;
   name: string;
   password: string;
-  username: string;
 }
 
 export { ICreateUserDTO };

@@ -15,14 +15,13 @@ class CreateUserUseCase {
   }
 
   async execute(data: ICreateUserDTO) {
-    const { driver_license, email, name, password, username } = data;
+    const { driver_license, email, name, password } = data;
 
     this.usersRepository.create({
       driver_license,
       email,
       name,
       password,
-      username,
     });
   }
 }
