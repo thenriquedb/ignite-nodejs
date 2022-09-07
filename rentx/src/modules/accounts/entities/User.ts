@@ -24,9 +24,6 @@ class User {
   @Column()
   public password: string;
 
-  @Column({ unique: true })
-  public username: string;
-
   constructor() {
     if (!this.id) this.id = uuidV4();
   }
