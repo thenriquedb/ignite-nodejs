@@ -12,17 +12,21 @@ class UsersRepository implements IUsersRepository {
   }
 
   async create(data: ICreateUserDTO) {
-    const { driver_license, email, name, password, username } = data;
+    const { driver_license, email, name, password } = data;
 
     const user = this.repository.create({
       driver_license,
       email,
       name,
       password,
-      username,
     });
 
     await this.repository.save(user);
+  }
+
+  async findByEmail(email: string) {
+    const user = await this.repository.findOne({ email });
+    return user;
   }
 }
 
