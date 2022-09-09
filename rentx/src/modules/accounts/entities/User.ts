@@ -12,7 +12,7 @@ class User {
   @Column()
   public driver_license: string;
 
-  @Column({ unique: true })
+  @Column()
   public email: string;
 
   @Column()
