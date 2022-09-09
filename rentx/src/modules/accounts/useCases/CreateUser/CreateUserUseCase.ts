@@ -1,8 +1,8 @@
-import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
 
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { BCrypt } from "../../utils/BCrypt";
 
 @injectable()
 class CreateUserUseCase {
@@ -23,7 +23,7 @@ class CreateUserUseCase {
       throw new Error("User already exits");
     }
 
-    const passwordHash = await hash(password, 8);
+    const passwordHash = await BCrypt.hash(password, 8);
 
     this.usersRepository.create({
       driver_license,
