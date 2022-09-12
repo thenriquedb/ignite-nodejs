@@ -2,12 +2,11 @@ import { faker } from "@faker-js/faker";
 
 import { AppError } from "@shared/errors/AppError";
 
-import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoriesRepositoryInMemory";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
+let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
 let createCategoryUseCase: CreateCategoryUseCase;
-let categoriesRepositoryInMemory: ICategoriesRepository;
 
 describe("CreateCategoryUseCase", () => {
   beforeEach(() => {
