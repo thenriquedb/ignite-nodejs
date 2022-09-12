@@ -1,5 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "@shared/errors/AppError";
+
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { BCrypt } from "../../utils/BCrypt";
@@ -20,7 +22,7 @@ class CreateUserUseCase {
 
     const user = await this.usersRepository.findByEmail(email);
     if (user) {
-      throw new Error("User already exits");
+      throw new AppError("User already exits");
     }
 
     const passwordHash = await BCrypt.hash(password, 8);
