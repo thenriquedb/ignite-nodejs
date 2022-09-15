@@ -16,7 +16,7 @@ describe("CreateCategoryUseCase", () => {
   });
 
   it("should be able to create a new category", async () => {
-    const name = faker.name.fullName();
+    const name = faker.vehicle.type();
 
     await createCategoryUseCase.execute({
       name,
@@ -30,7 +30,7 @@ describe("CreateCategoryUseCase", () => {
 
   it("should not be able to create a new category with name exists", () => {
     expect(async () => {
-      const name = faker.name.fullName();
+      const name = faker.vehicle.type();
 
       await createCategoryUseCase.execute({
         name,
