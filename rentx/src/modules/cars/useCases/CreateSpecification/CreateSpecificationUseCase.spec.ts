@@ -16,7 +16,7 @@ describe("CreateSpecificationUseCase", () => {
   });
 
   it("should be able to create new specification", async () => {
-    const name = faker.name.fullName();
+    const name = faker.vehicle.type();
 
     await createSpecificationUseCase.execute({
       name,
@@ -31,7 +31,7 @@ describe("CreateSpecificationUseCase", () => {
 
   it("should not be able to create a new specification with name exists", () => {
     expect(async () => {
-      const name = faker.name.fullName();
+      const name = faker.vehicle.type();
 
       await createSpecificationUseCase.execute({
         name,
