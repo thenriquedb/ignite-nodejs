@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-
 import { AppError } from "@shared/errors/AppError";
 
 import { UsersRepositoryInMemory } from "../../repositories/in-memory/UsersRepositoryInMemory";

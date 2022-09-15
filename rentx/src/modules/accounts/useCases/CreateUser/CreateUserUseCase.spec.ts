@@ -1,6 +1,5 @@
 import { faker } from "@faker-js/faker";
 import { BCrypt } from "@modules/accounts/utils/BCrypt";
-
 import { AppError } from "@shared/errors/AppError";
 
 import { UsersRepositoryInMemory } from "../../repositories/in-memory/UsersRepositoryInMemory";
