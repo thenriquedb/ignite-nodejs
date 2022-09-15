@@ -1,8 +1,10 @@
 import { Entity, Column, PrimaryColumn, CreateDateColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
+import { ICategory } from "@modules/cars/entities/ICategory";
+
 @Entity("categories")
-class Category {
+class Category implements ICategory {
   @PrimaryColumn()
   public id?: string;
 

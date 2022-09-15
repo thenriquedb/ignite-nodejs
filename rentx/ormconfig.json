@@ -6,12 +6,12 @@
   "password": "1234",
   "database": "rentx",
   "migrations": [
-    "./src/database/migrations/*.ts"
+    "./src/shared/infra/http/typeorm/migrations/*.ts"
   ],
   "entities": [
     "./src/modules/**/entities/*.ts"
   ],
   "cli": {
-    "migrationsDir": "./src/database/migrations"
+    "migrationsDir": "./src/shared/infra/http/typeorm/migrations"
   }
 }

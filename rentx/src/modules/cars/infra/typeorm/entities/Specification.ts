@@ -1,8 +1,10 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
+import { ISpecification } from "@modules/cars/entities/ISpecification";
+
 @Entity("specifications")
-class Specification {
+class Specification implements ISpecification {
   @PrimaryColumn()
   public id?: string;
 
