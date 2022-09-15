@@ -20,6 +20,10 @@ export class CreateCars1663279271551 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "license_plate",
+            type: "varchar",
+          },
+          {
             name: "description",
             type: "varchar",
           },
