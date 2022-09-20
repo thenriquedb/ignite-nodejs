@@ -1,10 +1,18 @@
-import { Entity, Column, PrimaryColumn, CreateDateColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  CreateDateColumn,
+  JoinColumn,
+  ManyToOne,
+} from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
 import { ICar } from "@modules/cars/entities/ICar";
+import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 
 @Entity("cars")
-class Car implements ICar {
+class Car {
   @PrimaryColumn()
   id: string;
 
@@ -28,6 +36,10 @@ class Car implements ICar {
 
   @Column()
   available: boolean;
+
+  @ManyToOne(() => Category)
+  @JoinColumn({ name: "category_id" })
+  category: Category;
 
   @Column()
   category_id: string;
